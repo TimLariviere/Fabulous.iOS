@@ -1,0 +1,64 @@
+{
+  "assemblies": [
+    "/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/Xamarin.iOS/Xamarin.iOS.dll"
+  ],
+  "outputNamespace": "Fabulous.iOS",
+  "types": [
+    {
+      "type": "UIKit.UIView",
+      "properties": [
+        {
+          "source": "BackgroundColor",
+          "defaultValue": "null"
+        },
+        {
+          "source": "Frame",
+          "defaultValue": "CoreGraphics.CGRect(0., 0., 0., 0.)"
+        },
+        {
+          "source": null,
+          "name": "Subviews",
+          "inputType": "ViewElement list",
+          "defaultValue": "[]",
+          "updateCode": "ViewUpdaters.updateUIViewSubviews",
+          "collection": {
+            "elementType": "UIKit.UIView"
+          }
+        }
+      ]
+    },
+    {
+      "type": "UIKit.UIViewController",
+      "properties": [
+        {
+          "source": "Title"
+        },
+        {
+          "source": "View"
+        }
+      ]
+    },
+    {
+      "type": "UIKit.UIStackView"
+    },
+    {
+      "type": "UIKit.UIButton",
+      "properties": [
+        {
+          "source": null,
+          "name": "Title",
+          "inputType": "string",
+          "defaultValue": "null",
+          "updateCode": "ViewUpdaters.updateUIButtonTitle"
+        },
+        {
+          "source": null,
+          "name": "TitleColor",
+          "inputType": "UIKit.UIColor",
+          "defaultValue": "null",
+          "updateCode": "ViewUpdaters.updateUIButtonTitleColor"
+        }
+      ]
+    }
+  ]
+}
