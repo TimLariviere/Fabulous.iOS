@@ -1,4 +1,4 @@
-﻿namespace CounterApp
+namespace CounterApp
 
 open Fabulous
 open Fabulous.iOS
@@ -61,11 +61,11 @@ module App =
     let program = 
         Program.mkProgramWithCmdMsg init update view mapCmdMsgToCmd
 
-type App() as window =
-    inherit UIWindow(UIScreen.MainScreen.Bounds)
+type App(scene: UIWindowScene) as window =
+    inherit UIWindow(scene.CoordinateSpace.Bounds)
     
-    do window.MakeKeyAndVisible()
-
+        do window.WindowScene <- scene
+        do window.MakeKeyAndVisible()
     let runner =
         App.program
         |> Program.withConsoleTrace

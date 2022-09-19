@@ -3,13 +3,15 @@
 open UIKit
 open Foundation
 
-[<Register("AppDelegate")>]
+[<Register(nameof AppDelegate)>]
 type AppDelegate() =
-    inherit UIApplicationDelegate()
+    inherit UIResponder()
 
-    override val Window = null with get, set
+    interface IUIApplicationDelegate
 
-    // This method is invoked when the application is ready to run.
-    override this.FinishedLaunching(app, options) =
-        this.Window <- new App()
-        true
+    [<Export("application:didFinishLaunchingWithOptions:")>]
+    member this.FinishedLaunching(_: UIApplication, _: NSDictionary) : bool = true
+
+    [<Export("application:configurationForConnectingSceneSession:options:")>]
+    member this.GetConfiguration(_: UIApplication, sceneSession: UISceneSession, _: UISceneConnectionOptions) =
+        UISceneConfiguration.Create("Default Configuration", sceneSession.Role)
