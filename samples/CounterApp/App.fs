@@ -65,8 +65,12 @@ type App(scene: UIWindowScene) as window =
     inherit UIWindow(scene.CoordinateSpace.Bounds)
     
         do window.WindowScene <- scene
+        do
+           // let uiViewController = new UIViewController()
+           // uiViewController.View.BackgroundColor <- UIColor.Red
+           // window.RootViewController <- uiViewController
         do window.MakeKeyAndVisible()
     let runner =
         App.program
         |> Program.withConsoleTrace
-        |> iOSProgram.run window
+        |> iOSProgram.runWith window
